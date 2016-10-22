@@ -1,7 +1,11 @@
 var express = require('express');
 var app = express();
-app.set('port', process.env.PORT || 5000);
+var port = process.env.PORT || 5000;
 const PAGE_ACCESS_TOKEN = "EAANYlFHm1dcBAPftyw2cpm4zalz32qYxKGltr5cVOBKAl9IdxOG2MmjTEot5rNC39eKVD8FnFtFZB9w9w7BqvWGYmFhTFTAl1zlD7IaDg7hPjXrM5bc0qj9GOFDAxBG2HVZBxnuptfjvFUKgl3OrxoisZBBNCIz5lEv3JiVZBgZDZD";
+
+app.listen(port, function() {
+  console.log('Node app is running on port', port);
+});
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
@@ -186,7 +190,3 @@ function callSendAPI(messageData) {
     }
   });  
 }
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});

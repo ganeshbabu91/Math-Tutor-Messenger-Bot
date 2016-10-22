@@ -1,0 +1,29 @@
+{
+  "name": "math-tutor-messenger-bot",
+  "version": "1.0.0",
+  "description": "This is the backend created to send/receive messages from Math Tutor facebook page",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganeshbabu91/Math-Tutor-Messenger-Bot.git"
+  },
+  "keywords": [
+    "facebook",
+    "maths",
+    "alegebra",
+    "messenger",
+    "bot",
+    "node",
+    "express"
+  ],
+  "author": "TBD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ganeshbabu91/Math-Tutor-Messenger-Bot/issues"
+  },
+  "homepage": "https://github.com/ganeshbabu91/Math-Tutor-Messenger-Bot#readme"
+}

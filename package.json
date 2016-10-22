@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This is the backend created to send/receive messages from Math Tutor facebook page",
   "main": "app.js",
+  "engines" : {
+        "node" : "*"
+  },
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"

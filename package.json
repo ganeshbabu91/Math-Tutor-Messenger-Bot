@@ -7,7 +7,8 @@
         "node" : "*"
   },
   "dependencies": {
-        "express" : "*"
+        "express" : "*",
+        "body-parser": "*"
   },
   "scripts": {
     "start": "node app.js",

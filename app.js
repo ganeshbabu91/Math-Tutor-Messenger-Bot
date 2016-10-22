@@ -1,11 +1,13 @@
-var express = require('express');
-var bodyParser = require('body-parser')
-var app = express();
-var port = process.env.PORT || 5000;
-app.use(bodyParser.json());
-const 
+const
+	express = require('express');
+	bodyParser = require('body-parser')
+  	request = require('request');
+	app = express();
+	port = process.env.PORT || 5000;
 	PAGE_ACCESS_TOKEN = "EAANYlFHm1dcBAGTy8ABwnPTa2ZBzm85elaLkEwI2YWgAf7gZBBVLcDWIUqbsnMJpNETIQUCJ72JUwf8BDqrhrZAH8ihbd3Ws3uDuqZB1Eehf0l5lJJ49qUB0RfVhIDw10Ns2ehSCeeTx8JtW6tjgKUG1Yk2Df9AZC63OIE2M7ygZDZD",
 	VALIDATION_TOKEN = "verify-tbd";
+
+app.use(bodyParser.json());
 	
 app.listen(port, function() {
   console.log('Node app is running on port', port);

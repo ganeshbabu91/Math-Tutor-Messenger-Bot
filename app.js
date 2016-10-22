@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 5000;
 const 
-	PAGE_ACCESS_TOKEN = "EAANYlFHm1dcBAPftyw2cpm4zalz32qYxKGltr5cVOBKAl9IdxOG2MmjTEot5rNC39eKVD8FnFtFZB9w9w7BqvWGYmFhTFTAl1zlD7IaDg7hPjXrM5bc0qj9GOFDAxBG2HVZBxnuptfjvFUKgl3OrxoisZBBNCIz5lEv3JiVZBgZDZD",
+	PAGE_ACCESS_TOKEN = "EAANYlFHm1dcBAGTy8ABwnPTa2ZBzm85elaLkEwI2YWgAf7gZBBVLcDWIUqbsnMJpNETIQUCJ72JUwf8BDqrhrZAH8ihbd3Ws3uDuqZB1Eehf0l5lJJ49qUB0RfVhIDw10Ns2ehSCeeTx8JtW6tjgKUG1Yk2Df9AZC63OIE2M7ygZDZD",
 	VALIDATION_TOKEN = "verify-tbd";
 	
 app.listen(port, function() {

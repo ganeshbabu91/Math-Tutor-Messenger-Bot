@@ -40,7 +40,7 @@ app.get('/webhook', function(req, res) {
 
 app.post('/webhook', function (req, res) {
   var data = req.body;
-  console.log("request from messenger = %o",req);
+  //console.log("request from messenger = %o",req);
   // Make sure this is a page subscription
   if (data.object == 'page') {
     // Iterate over each entry
@@ -90,7 +90,7 @@ function receivedMessage(event) {
 
   console.log('messageText ',messageText);
   console.log('messageAttachments ',messageAttachments);
-  if(messageAttachments.payload && messageAttachments.payload.url){
+  if(messageAttachments && messageAttachments.payload && messageAttachments.payload.url){
     callGoogleAPI(messageAttachments.payload.url);
     console.log('messageAttachments.payload.url ',messageAttachments.payload.url);
   }

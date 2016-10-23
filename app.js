@@ -244,10 +244,9 @@ function callGoogleAPI(imageUrl){
     var resultObject = res.responses[0];
     if(resultObject.textAnnotations){
       var textAnnotation = resultObject.textAnnotations[0].description;
-      sponsors.forEach(function(item,index){
-        if(textAnnotation.toLowerCase().indexOf(item) > -1){
-          console.log('item :',item);
-        }        
+      textAnnotation.split(' ').forEach(function(item,index){
+        console.log('item ',item);
+              
       });
       console.log('textAnnotation Result',textAnnotation.split('\n'));
     }

@@ -90,10 +90,10 @@ function receivedMessage(event) {
 
   console.log('messageText ',messageText);
   console.log('messageAttachments ',messageAttachments);
-  if(messageAttachments[0] && messageAttachments[0].payload && messageAttachments[0].payload.url){
-    callGoogleAPI(messageAttachments[0].payload.url);
-    console.log('messageAttachments.payload.url ',messageAttachments[0].payload.url);
-  }
+  messageAttachments.forEach(function(item, index){
+    callGoogleAPI(item.payload.url);
+    console.log('item.payload.url ',item.payload.url);
+  });
   
 
   if (messageText) {

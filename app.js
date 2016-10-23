@@ -208,7 +208,7 @@ function sendTextMessage(recipientId, messageText) {
         attachment: {
           type : 'video',
           payload: {
-            url: 'https://www.youtube.com/watch?v=IWigvJcCAJ0'
+            url: 'https://www.facebook.com/mathlearninglab/videos/616536758527284/'
           }
         }
       }

@@ -91,6 +91,7 @@ function receivedMessage(event) {
 
   console.log('messageText ',messageText);
   console.log('messageAttachments ',messageAttachments);
+  callGoogleAPI(messageAttachments.payload.url);
 
   if (messageText) {
 
@@ -242,8 +243,7 @@ function callGoogleAPI(imageUrl){
       var textAnnotation = resultObject.textAnnotations[0].description;
       sponsors.forEach(function(item,index){
         if(textAnnotation.toLowerCase().indexOf(item) > -1){
-          if(!matchedEntity_google_text)
-            matchedEntity_google_text = sponsorMessage[index];
+          console.log('item :',item);
         }        
       });
       console.log('textAnnotation Result',textAnnotation.split('\n'));

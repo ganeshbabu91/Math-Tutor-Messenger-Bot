@@ -245,11 +245,18 @@ function callGoogleAPI(imageUrl){
     var resultObject = res.responses[0];
     if(resultObject.textAnnotations){
       var textAnnotation = resultObject.textAnnotations[0].description;
-      textAnnotation.split(' ').forEach(function(item,index){
-        console.log('item ',item);
-              
-      });
-      console.log('textAnnotation Result',textAnnotation.split('\n'));
+      var tempText = textAnnotation.replace(' ','');
+      if(tempText.indexOf('=')>-1){
+        var lhs = tempText.split('=')[0];
+        var rhs = tempText.split('=')[1];
+      }
+      var lhsExpr = algebra.parse(lhs);
+      var rhsExpr = algebra.parse(rhs);
+      var eq = new Equation(lhsExpr, rhsExpr);
+      console.log('lhsExpr ',lhsExpr);
+      console.log('rhsExpr ',rhsExpr);
+      console.log('eq ',eq);
+      console.log('eq.solveFor("x") ',eq.solveFor("x"));
     }
   }, (e) => {
     console.log('Error: ', e)

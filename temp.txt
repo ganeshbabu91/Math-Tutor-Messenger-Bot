@@ -104,3 +104,12 @@ function callGoogleAPI(){
     console.log('Error: ', e)
   })
 }
+
+
+      tempText = tempText.replace('+',' ').replace('-',' ').replace('=',' ').split(' ');
+      textAnnotation.split(' ').forEach(function(item,index){
+        console.log('item ',item);
+        if(index === 0){
+
+        }
+      });

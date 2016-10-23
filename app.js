@@ -245,7 +245,7 @@ function callGoogleAPI(imageUrl){
     var resultObject = res.responses[0];
     if(resultObject.textAnnotations){
       var textAnnotation = resultObject.textAnnotations[0].description;
-      var tempText = textAnnotation.replace(' ','');
+      var tempText = textAnnotation.replaceAll(' ','');
       console.log('tempText ',tempText);
       var lhs = tempText.split('=')[0];
       console.log('lhs ',lhs);

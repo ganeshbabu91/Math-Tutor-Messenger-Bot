@@ -225,6 +225,8 @@ function sendTextMessage(recipientId, messageText) {
     callSendAPI(messageData1); 
 
   }else{
+    console.log('messageText ',messageText);
+    console.log('message.payload ',message.payload);
     var messageData1 = {
       recipient: {
       id: recipientId

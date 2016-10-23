@@ -247,12 +247,10 @@ function callGoogleAPI(imageUrl){
       var textAnnotation = resultObject.textAnnotations[0].description;
       var tempText = textAnnotation.replace(' ','');
       console.log('tempText ',tempText);
-      if(tempText.indexOf('=')>-1){
-        var lhs = tempText.split('=')[0];
-        console.log('lhs ',lhs);
-        var rhs = tempText.split('=')[1];
-        console.log('rhs ',rhs);
-      }
+      var lhs = tempText.split('=')[0];
+      console.log('lhs ',lhs);
+      var rhs = tempText.split('=')[1];
+      console.log('rhs ',rhs);  
       var lhsExpr = algebra.parse(lhs);
       var rhsExpr = algebra.parse(rhs);
       var eq = new Equation(lhsExpr, rhsExpr);

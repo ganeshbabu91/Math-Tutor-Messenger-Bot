@@ -56,7 +56,7 @@ app.post('/webhook', function (req, res) {
         } else if (messagingEvent.message) {
           receivedMessage(messagingEvent);
         } else if (messagingEvent.delivery) {
-          receivedDeliveryConfirmation(messagingEvent);
+         // receivedDeliveryConfirmation(messagingEvent);
         } else if (messagingEvent.postback) {
           receivedPostback(messagingEvent);
         } else {

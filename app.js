@@ -205,10 +205,12 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
       },
      message: {
-      type : 'video',
-      payload: {
-        url: 'https://www.youtube.com/watch?v=IWigvJcCAJ0'
-      }
+        attachment: {
+          type : 'video',
+          payload: {
+            url: 'https://www.youtube.com/watch?v=IWigvJcCAJ0'
+          }
+        }
       }
     };
     callSendAPI(messageData); 

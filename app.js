@@ -58,7 +58,7 @@ app.post('/webhook', function (req, res) {
         } else if (messagingEvent.delivery) {
          // receivedDeliveryConfirmation(messagingEvent);
         } else if (messagingEvent.postback) {
-          receivedMessage(messagingEvent);
+          receivedPostback(messagingEvent);
         } else {
           console.log("Webhook received unknown messagingEvent: ", messagingEvent);
         }
@@ -86,10 +86,6 @@ function receivedMessage(event) {
 
   // You may get a text or attachment but not both
   var messageText = message.text;
-  if(event.postback){
-    messageText = event.postback.payload;
-    console.log('event.postback ',messageText);
-  }
   var messageAttachments = message.attachments;
 
   console.log('messageText ',messageText);
@@ -291,7 +287,7 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
-  sendTextMessage(senderID, "Postback called");
+  sendTextMessage(senderID, payload);
 }
 
 function callSendAPI(messageData) {

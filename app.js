@@ -7,6 +7,16 @@ const
 	PAGE_ACCESS_TOKEN = "EAANYlFHm1dcBAGTy8ABwnPTa2ZBzm85elaLkEwI2YWgAf7gZBBVLcDWIUqbsnMJpNETIQUCJ72JUwf8BDqrhrZAH8ihbd3Ws3uDuqZB1Eehf0l5lJJ49qUB0RfVhIDw10Ns2ehSCeeTx8JtW6tjgKUG1Yk2Df9AZC63OIE2M7ygZDZD",
 	VALIDATION_TOKEN = "verify-tbd";
 
+var algebra = require('algebra.js');
+
+var Fraction = algebra.Fraction;
+var Expression = algebra.Expression;
+var Equation = algebra.Equation;
+
+var vision = require('node-cloud-vision-api')
+vision.init({auth: 'AIzaSyCbDDuE_7XnbPTfJtMhgWWETzQTcnpKRlY'});
+
+
 app.use(bodyParser.json());
 	
 app.listen(port, function() {
@@ -78,6 +88,9 @@ function receivedMessage(event) {
   // You may get a text or attachment but not both
   var messageText = message.text;
   var messageAttachments = message.attachments;
+
+  console.log('messageText ',messageText);
+  console.log('messageAttachments ',messageAttachments);
 
   if (messageText) {
 
@@ -206,4 +219,36 @@ function callSendAPI(messageData) {
       console.error(error);
     }
   });  
+}
+
+function callGoogleAPI(imageUrl){
+  //console.log('inside callGoogleAPI');
+  // 2nd image of request is load from Web
+  var req = new vision.Request({
+    image: new vision.Image({
+      url: imageUrl
+    }),
+    features: [
+      new vision.Feature('TEXT_DETECTION', 10),
+    ]
+  })
+
+  // send single request
+  vision.annotate(req).then((res) => {
+    // handling response
+    console.log(JSON.stringify(res.responses))
+    var resultObject = res.responses[0];
+    if(resultObject.textAnnotations){
+      var textAnnotation = resultObject.textAnnotations[0].description;
+      sponsors.forEach(function(item,index){
+        if(textAnnotation.toLowerCase().indexOf(item) > -1){
+          if(!matchedEntity_google_text)
+            matchedEntity_google_text = sponsorMessage[index];
+        }        
+      });
+      console.log('textAnnotation Result',textAnnotation.split('\n'));
+    }
+  }, (e) => {
+    console.log('Error: ', e)
+  })
 }

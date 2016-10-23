@@ -9,7 +9,9 @@
   "dependencies": {
         "express" : "*",
         "body-parser" : "*",
-        "request" : "*"
+        "request" : "*",
+        "algebra.js": "*",
+        "node-cloud-vision-api": "*"
   },
   "scripts": {
     "start": "node app.js",

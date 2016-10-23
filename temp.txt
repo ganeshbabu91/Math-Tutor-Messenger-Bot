@@ -1,0 +1,106 @@
+
+var expr = new Expression("x");
+expr = expr.subtract(3);
+expr = expr.add("x");
+console.log(expr.toString());
+
+var eq = new Equation(expr, 4);
+console.log(eq.toString());
+
+var x = eq.solveFor("x");
+console.log("x = " + x.toString());
+
+
+var a = new Expression("x").pow(2);
+var b = new Expression("x").multiply(new Fraction(5, 4));
+var c = new Fraction(-21, 4);
+var expr = a.add(b).add(c);
+var quad = new Equation(expr, 0);
+var answers = quad.solveFor("x");
+console.log('answers ',answers.toString());
+
+
+var expr1 = algebra.parse("1/4 * x + 5/4");
+var expr2 = algebra.parse("3 * y - 12/5");
+
+var eq = new Equation(expr1, expr2);
+
+console.log(eq.toString());
+
+var xAnswer = eq.solveFor("x");
+var yAnswer = eq.solveFor("y");
+
+console.log("x = " + xAnswer.toString());
+console.log("y = " + yAnswer.toString());
+var answer1 = eq.eval({x: xAnswer});
+console.log("answer1 = " + answer1.toString());
+
+----
+
+
+function callGoogleAPI(){
+  //console.log('inside callGoogleAPI');
+  // 2nd image of request is load from Web
+  var req = new vision.Request({
+    image: new vision.Image({
+      url: 'http://13.84.145.193:9000/static/img.jpg'
+    }),
+    features: [
+      new vision.Feature('FACE_DETECTION', 10),
+      new vision.Feature('TEXT_DETECTION', 10),
+      new vision.Feature('LOGO_DETECTION', 10),
+      new vision.Feature('LABEL_DETECTION', 10),
+    ]
+  })
+
+  // send single request
+  vision.annotate(req).then((res) => {
+    // handling response
+    console.log(JSON.stringify(res.responses))
+    var resultObject = res.responses[0];
+    if(resultObject.logoAnnotations){
+      var logoAnnotation = resultObject.logoAnnotations;
+      logoAnnotation.forEach(function(item,index){
+        if(!matchedEntity_google_logo){
+          var description = item.description;
+          if(description.indexOf(' ') > -1)
+            description = description.split(' ')[0];
+          sponsors.forEach(function(item,index){
+            if(description.toLowerCase().indexOf(item) > -1){
+              if(!matchedEntity_google_logo)
+                matchedEntity_google_logo = sponsorMessage[index];
+            }
+          });
+        }
+      });
+      console.log('logoAnnotation',logoAnnotation);
+    }
+    if(resultObject.textAnnotations){
+      var textAnnotation = resultObject.textAnnotations[0].description;
+      sponsors.forEach(function(item,index){
+        if(textAnnotation.toLowerCase().indexOf(item) > -1){
+          if(!matchedEntity_google_text)
+            matchedEntity_google_text = sponsorMessage[index];
+        }        
+      });
+      console.log('textAnnotation Result',textAnnotation.split('\n'));
+    }
+    if(resultObject.faceAnnotations){
+      var faceAnnotations = resultObject.faceAnnotations;
+      faceAnnotations.forEach(function(item,index){
+        matchedEntity_google_face_joy = matchedEntity_google_face_joy + ' :: ' + item.joyLikelihood;
+        matchedEntity_google_face_sorrow = matchedEntity_google_face_sorrow + ' :: ' + item.sorrowLikelihood;
+        matchedEntity_google_face_anger = matchedEntity_google_face_anger + ' :: ' + item.angerLikelihood;
+        matchedEntity_google_face_surprise = matchedEntity_google_face_surprise + ' :: ' + item.surpriseLikelihood;
+        if(item.length == (index+1)){
+          console.log('matchedEntity_google_face_joy ',matchedEntity_google_face_joy);
+          console.log('matchedEntity_google_face_sorrow ',matchedEntity_google_face_sorrow);
+          console.log('matchedEntity_google_face_anger ',matchedEntity_google_face_anger);
+          console.log('matchedEntity_google_face_surprise ',matchedEntity_google_face_surprise);
+        }
+      });
+    }
+  }, (e) => {
+    console.log('Error: ', e)
+  })
+}

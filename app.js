@@ -86,6 +86,9 @@ function receivedMessage(event) {
 
   // You may get a text or attachment but not both
   var messageText = message.text;
+  if(messageText == 'Postback called'){
+    messageText = message.payload;
+  }
   var messageAttachments = message.attachments;
 
   console.log('messageText ',messageText);
@@ -226,7 +229,6 @@ function sendTextMessage(recipientId, messageText) {
 
   }else{
     console.log('messageText ',messageText);
-    console.log('message.payload ',message.payload);
     var messageData1 = {
       recipient: {
       id: recipientId

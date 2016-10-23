@@ -81,7 +81,6 @@ function receivedMessage(event) {
 
   console.log("Received message for user %d and page %d at %d with message:", 
     senderID, recipientID, timeOfMessage);
-  console.log(JSON.stringify(message));
 
   var messageId = message.mid;
 
@@ -91,7 +90,11 @@ function receivedMessage(event) {
 
   console.log('messageText ',messageText);
   console.log('messageAttachments ',messageAttachments);
-  callGoogleAPI(messageAttachments.payload.url);
+  if(messageAttachments.payload && messageAttachments.payload.url){
+    callGoogleAPI(messageAttachments.payload.url);
+    console.log('messageAttachments.payload.url ',messageAttachments.payload.url);
+  }
+  
 
   if (messageText) {
 

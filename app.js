@@ -208,7 +208,7 @@ function sendTextMessage(recipientId, messageText) {
         attachment: {
           type : 'video',
           payload: {
-            url: 'https://www.facebook.com/mathlearninglab/videos/616536758527284/'
+            url: 'http://embed.wistia.com/deliveries/501c810a3a7713c88869e93e6db810b00fbcf113/file.mp4'
           }
         }
       }

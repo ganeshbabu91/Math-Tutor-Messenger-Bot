@@ -174,7 +174,7 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
       },
      message: {
-      text: 'For Quadration equations, 1> Calculate the discriminant, b^2 - 4ac'
+      text: 'Calculate the discriminant, b^2 - 4ac'
       }
     };
     callSendAPI(messageData); 
@@ -184,7 +184,7 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
       },
      message: {
-      text: '2> If the discriminant is equal to 0, there is one real root: -b / 2a'
+      text: 'If the discriminant is equal to 0, there is one real root: -b / 2a'
       }
     };
     callSendAPI(messageData1);     
@@ -194,7 +194,7 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
       },
      message: {
-      text: '3> If the discriminant is greater than 0, there are two real roots: (-b - √discriminant) / 2a, (-b + √discriminant) / 2a'
+      text: 'If the discriminant is greater than 0, there are two real roots: (-b - √discriminant) / 2a, (-b + √discriminant) / 2a'
       }
     };
     callSendAPI(messageData2);    
@@ -258,9 +258,9 @@ function sendGenericMessage(recipientId) {
               title: "View Explanation",
               payload: "View Explanation",
             }, {
-              type: "postback",
+              type: "web_url",
               title: "Watch Video Lecture",
-              payload: "Watch Video Lecture",
+              url: "https://www.youtube.com/watch?v=s80J2dAUUyI",
             },{
               type: "postback",
               title: "Try Another Problem",

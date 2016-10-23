@@ -86,8 +86,9 @@ function receivedMessage(event) {
 
   // You may get a text or attachment but not both
   var messageText = message.text;
-  if(messageText == 'Postback called'){
-    messageText = message.payload;
+  if(event.postback){
+    messageText = event.postback.payload;
+    console.log('event.postback ',messageText);
   }
   var messageAttachments = message.attachments;
 

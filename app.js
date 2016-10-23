@@ -123,21 +123,118 @@ function receivedMessage(event) {
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, "Message with attachment received");
+    sendGenericMessage(senderID, "Message with attachment received");
   }
 }
 
 function sendTextMessage(recipientId, messageText) {
-  var messageData = {
-    recipient: {
+  if(messageText == 'Hi'){
+    var messageData = {
+      recipient: {
       id: recipientId
-    },
-    message: {
-      text: messageText
-    }
-  };
+      },
+     message: {
+      text: 'hello'
+      }
+    };
+    callSendAPI(messageData);
 
-  callSendAPI(messageData);
+    var messageData1 = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      text: 'What can I do for you ?'
+      }
+    };
+    callSendAPI(messageData1);
+  }else if (messageText == 'I need help with a maths problem'){
+    var messageData = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      text: 'Pleased to help you !!'
+      }
+    };
+    callSendAPI(messageData); 
+
+    var messageData1 = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      text: 'Can you send me a snapshot of your problem ?'
+      }
+    };
+    callSendAPI(messageData1);       
+  }else if(messageText == 'View Explanation'){
+    var messageData = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      text: 'For Quadration equations, 1> Calculate the discriminant, b^2 - 4ac'
+      }
+    };
+    callSendAPI(messageData); 
+
+    var messageData1 = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      text: '2> If the discriminant is equal to 0, there is one real root: -b / 2a'
+      }
+    };
+    callSendAPI(messageData1);     
+
+    var messageData2 = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      text: '3> If the discriminant is greater than 0, there are two real roots: (-b - √discriminant) / 2a, (-b + √discriminant) / 2a'
+      }
+    };
+    callSendAPI(messageData2);    
+
+  }else if(messageText == 'Watch Video Lecture'){
+    var messageData = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      type : 'video',
+      payload: {
+        url: 'https://www.youtube.com/watch?v=IWigvJcCAJ0'
+      }
+      }
+    };
+    callSendAPI(messageData); 
+
+  }else if(messageText == 'Try Another Problem'){
+    var messageData1 = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      text: 'Can you send me a snapshot of your problem ?'
+      }
+    };
+    callSendAPI(messageData1); 
+
+  }else{
+    var messageData1 = {
+      recipient: {
+      id: recipientId
+      },
+     message: {
+      text: 'What can I do for you ?'
+      }
+    };
+    callSendAPI(messageData1);
+  }
 }
 
 function sendGenericMessage(recipientId) {
@@ -151,33 +248,21 @@ function sendGenericMessage(recipientId) {
         payload: {
           template_type: "generic",
           elements: [{
-            title: "rift",
-            subtitle: "Next-generation virtual reality",
-            item_url: "https://www.oculus.com/en-us/rift/",               
-            image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+            title: "Answer",
+            subtitle: "Solution is 17/25",
             buttons: [{
-              type: "web_url",
-              url: "https://www.oculus.com/en-us/rift/",
-              title: "Open Web URL"
+              type: "postback",
+              title: "View Explanation",
+              payload: "View Explanation",
             }, {
               type: "postback",
-              title: "Call Postback",
-              payload: "Payload for first bubble",
+              title: "Watch Video Lecture",
+              payload: "Watch Video Lecture",
+            },{
+              type: "postback",
+              title: "Try Another Problem",
+              payload: "Try Another Problem",
             }],
-          }, {
-            title: "touch",
-            subtitle: "Your Hands, Now in VR",
-            item_url: "https://www.oculus.com/en-us/touch/",               
-            image_url: "http://messengerdemo.parseapp.com/img/touch.png",
-            buttons: [{
-              type: "web_url",
-              url: "https://www.oculus.com/en-us/touch/",
-              title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for second bubble",
-            }]
           }]
         }
       }
